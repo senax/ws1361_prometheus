@@ -1,0 +1,9 @@
+[Unit]
+Description=WS1361 to Prometheus
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/sbin/ws1361
+
+[Install]
+WantedBy=multi-user.target

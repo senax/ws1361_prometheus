@@ -3,6 +3,8 @@ Description=WS1361 to Prometheus
 After=syslog.target network.target
 
 [Service]
+Restart=always
+RestartSec=30s
 ExecStart=/usr/sbin/ws1361
 
 [Install]

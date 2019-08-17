@@ -36,6 +36,7 @@ func recordMetrics() {
 			if ret == 0 {
 				log.Fatal("Control returned 0 bytes: %d", ret, err)
 			}
+			/*
 			log.Printf("%#08b %#08b, \n", buf[1], buf[0])
 			log.Printf("7 %01b MAX   0=off 1=on\n", (buf[1] >> 7 & 1))
 			log.Printf("6 %01b speed 0=fast 1=slow\n", (buf[1] >> 6 & 1))
@@ -44,6 +45,7 @@ func recordMetrics() {
 			log.Printf("3 %01b\n", (buf[1] >> 3 & 1))
 			log.Printf("2 %01b\n", (buf[1] >> 2 & 1))
 			log.Printf("r %03b %d range\n", (buf[1] >> 2 & 7), (buf[1] >> 2 & 7))
+			*/
 			/*
 				buf[1] 	msar rruu
 				               ^^ = upper two bits of decibel value*10 - 30.

@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	// "fmt"
 	"log"
 	"net/http"
 	"time"
@@ -73,16 +72,13 @@ func parseReading(val []byte) ws1361reading {
 		buf[0]
 	*/
 	var reading ws1361reading
-	log.Printf("%#08b %#08b, \n", val[1], val[0])
+	// log.Printf("%#08b %#08b, \n", val[1], val[0])
 	reading.db = (float64(val[0])+float64(val[1]&3)*256)*0.1 + 30
 
 	return reading
 }
 
 func updatePrometheus(reading ws1361reading) {
-	/*
-	make it so, number two
-	*/
 
 	decibelGauge.Set(reading.db)
 
@@ -103,6 +99,7 @@ func updatePrometheus(reading ws1361reading) {
 	} else {
 		modeGauge.Set(1)
 	}
+
 	rangeGauge.Set(float64(reading.db_range))
 }
 
@@ -129,7 +126,7 @@ func recordMetrics() {
 				log.Fatal("Control returned 0 bytes: %d", ret, err)
 			}
 			reading := parseReading(buf)
-			log.Printf("%v\n",reading)
+			// log.Printf("%v\n",reading)
 
 			updatePrometheus(reading)
 
